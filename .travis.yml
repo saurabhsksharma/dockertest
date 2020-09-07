@@ -1,0 +1,11 @@
+sudo: required
+services:
+    - docker
+    - maven
+    - java
+
+before_install:
+    - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script:
+    - docker build -t screenpost-api -f Dockerfile .
