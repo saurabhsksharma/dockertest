@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		
+        <!-- <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/screenpostdb?serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hibernate.default_catalog">screenpostdb</property> -->
+
+        <property name="hibernate.connection.url">jdbc:mysql://host.docker.internal:3306/screenpostdb?serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">lensdoc789</property>
+        <property name="hibernate.default_catalog">screenpostdb</property>
+	
+		<property name="connection.CharSet">utf8</property>
+		<property name="connection.characterEncoding">utf8</property>
+		<property name="connection.useUnicode">true</property>
+		<!-- <property name="enable_lazy_load_no_trans">true</property> -->
+		<property name="connection.pool_size">100</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="cache.use_query_cache">false</property>
+		<property name="cache.use_second_level_cache">false</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		
+		<!-- Transaction isolation 2 = READ_COMMITTED -->
+		<property name="connection.isolation">2</property>
+		<property name="connection.autocommit">false</property>
+		
+		<!-- configuration pool via c3p0 -->
+		<property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property> 
+		<property name="c3p0.acquire_increment">1</property>
+		<property name="c3p0.idle_test_period">14400</property> 
+		<property name="c3p0.max_size">100</property>
+		<property name="c3p0.max_statements">100</property>
+		<property name="c3p0.min_size">1</property>
+		<property name="c3p0.timeout">3605</property>
+		<property name="c3p0.preferredTestQuery">select 1;</property>
+		
+		<mapping class="com.screenpost.api.pojo.OauthUserDet" />
+		<mapping class="com.screenpost.api.pojo.UserProfile" />
+		<mapping class="com.screenpost.api.pojo.Screen" />
+		<mapping class="com.screenpost.api.pojo.ScreenContent" />
+		<mapping class="com.screenpost.api.pojo.ScreenContentId" />
+		<mapping class="com.screenpost.api.pojo.Content" />
+		<mapping class="com.screenpost.api.pojo.ContainerContent" />
+		<mapping class="com.screenpost.api.pojo.ContainerContentId" />
+    </session-factory>
+</hibernate-configuration>
