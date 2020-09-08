@@ -4,7 +4,7 @@ WORKDIR '/api'
 
 COPY . .
 
-RUN mvn package
+RUN mvn clean package -DskipTests -Dmaven.javadoc.skip=true -B -V
 
 
 FROM openjdk:8-jdk-alpine
